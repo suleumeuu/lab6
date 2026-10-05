@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Hello
-        run: echo "Hello from Bekzat"
+        run: echo "Hello from Sagynysh"
 
       - name: OS info
         run: uname -a
