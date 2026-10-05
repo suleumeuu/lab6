@@ -1,15 +1,42 @@
-name: Hello World CI
+name: Lab 6 - GitHub Actions CI
 
 on:
   push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  hello:
+  ci-job:
+    name: DevOps CI Job
     runs-on: ubuntu-latest
 
     steps:
-      - name: Hello
+      - name: 1. Checkout repository
+        uses: actions/checkout@v7
+
+      - name: 2. Greeting
         run: echo "Hello from Sagynysh"
 
-      - name: OS info
+      - name: 3. Show operating system
         run: uname -a
+
+      - name: 4. Show current user
+        run: whoami
+
+      - name: 5. Show current directory
+        run: pwd
+
+      - name: 6. Show repository files
+        run: ls -la
+
+      - name: 7. Show GitHub information
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Triggered by: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+
+      - name: 8. Finish
+        run: echo "CI workflow completed successfully!"
